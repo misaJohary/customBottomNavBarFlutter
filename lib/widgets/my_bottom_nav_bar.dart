@@ -7,12 +7,15 @@ class MyBottomNavBar extends StatefulWidget {
   List<IconData> icon;
   List<String> label;
   List<Color> colors;
+  List<Map<String, Object>> tile;
   Color color;
   List<Map<String, Color>> colorTheme;
   Color backgroundColor;
   Color shadowColor;
   double height;
   double width;
+  double tileSize;
+  double tileAspectRatio;
   final Function callbackFunc;
   bool uniColor;
   bool isAnimated;
@@ -22,10 +25,13 @@ class MyBottomNavBar extends StatefulWidget {
   MyBottomNavBar({
     @required this.icon,
     @required this.label,
+    this.tile,
     this.backgroundColor = Colors.white,
     this.shadowColor = Colors.grey,
     this.height = 80,
     this.width = double.infinity,
+    this.tileSize = 15,
+    this.tileAspectRatio = 1.75,
     this.callbackFunc,
     this.uniColor = false,
     this.color = Colors.cyan,
@@ -84,6 +90,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                     currentIndex: currentIndex,
                     icon: widget.icon[index],
                     label: widget.label[index],
+                    tileSize: widget.tileSize,
+                    tileAspectRatio: widget.tileAspectRatio,
                     color: widget.uniColor
                         ? widget.color
                         : widget.randomizedColor
@@ -142,6 +150,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                           icon: widget.icon[index],
                           label: widget.label[index],
                           isAnimated: widget.isAnimated,
+                          tileSize: widget.tileSize,
+                          tileAspectRatio: widget.tileAspectRatio,
                           color: widget.uniColor
                               ? widget.color
                               : widget.randomizedColor
@@ -204,6 +214,8 @@ class _MyCustomTile extends StatefulWidget {
   @required
   final IconData icon;
   final String label;
+  double tileSize;
+  double tileAspectRatio;
   final Color color;
   bool isAnimated;
   @required
@@ -216,6 +228,8 @@ class _MyCustomTile extends StatefulWidget {
       this.label,
       this.color,
       this.isAnimated = true,
+      this.tileSize = 15,
+      this.tileAspectRatio = 1.75,
       // this.duration,
       this.voidCallBackFunc});
 
@@ -248,6 +262,7 @@ class _MyCustomTileState extends State<_MyCustomTile> {
                     color: widget.currentIndex == widget.index
                         ? widget.color
                         : Colors.grey,
+                    size: widget.tileSize * widget.tileAspectRatio,
                   ),
                   SizedBox(
                     width: 5,
@@ -257,6 +272,7 @@ class _MyCustomTileState extends State<_MyCustomTile> {
                           widget.label,
                           style: TextStyle(
                             color: widget.color,
+                            fontSize: widget.tileSize,
                           ),
                         )
                       : const Text(''),
@@ -281,6 +297,7 @@ class _MyCustomTileState extends State<_MyCustomTile> {
                     color: widget.currentIndex == widget.index
                         ? widget.color
                         : Colors.grey,
+                    size: widget.tileSize * widget.tileAspectRatio,
                   ),
                   SizedBox(
                     width: 5,
@@ -290,6 +307,7 @@ class _MyCustomTileState extends State<_MyCustomTile> {
                           widget.label,
                           style: TextStyle(
                             color: widget.color,
+                            fontSize: widget.tileSize,
                           ),
                         )
                       : const Text(''),

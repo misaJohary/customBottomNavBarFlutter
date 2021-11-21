@@ -133,6 +133,8 @@ class _HomeTestState extends State<HomeTest> {
         // IconButton(onPressed: (){}, icon: Icon(Icons.add)),
 
         bottomNavigationBar: MyBottomNavBar(
+          tileSize: 15,
+          tileAspectRatio: 1.75,
           height: 70,
           dynColorShadow: _isDynShadowColor,
           randomizedColor: _isRandomColor,
