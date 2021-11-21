@@ -170,20 +170,40 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
                                           : shadowColor = widget.colors[index])
                                   : shadowColor = Colors.grey;
                               _theme = ThemeData(
-                                primaryColor: widget.randomizedColor
-                                    ? widget.colorTheme[randomIndex]['primary']
-                                    : widget.colorTheme[index]['primary'],
-                                accentColor: widget.randomizedColor
-                                    ? widget.colorTheme[randomIndex]['accent']
-                                    : widget.colorTheme[index]['accent'],
-                                scaffoldBackgroundColor: Color(0xFFEFF3F6),
-                                appBarTheme: AppBarTheme(
-                                  backgroundColor: widget.randomizedColor
+                                  primaryColor: widget.randomizedColor
                                       ? widget.colorTheme[randomIndex]
                                           ['primary']
                                       : widget.colorTheme[index]['primary'],
-                                ),
-                              );
+                                  accentColor: widget.randomizedColor
+                                      ? widget.colorTheme[randomIndex]['accent']
+                                      : widget.colorTheme[index]['accent'],
+                                  scaffoldBackgroundColor: Color(0xFFEFF3F6),
+                                  appBarTheme: AppBarTheme(
+                                    backgroundColor: widget.randomizedColor
+                                        ? widget.colorTheme[randomIndex]
+                                            ['primary']
+                                        : widget.colorTheme[index]['primary'],
+                                  ),
+                                  sliderTheme:
+                                      SliderThemeData.fromPrimaryColors(
+                                          primaryColor: widget.randomizedColor
+                                              ? widget.colorTheme[randomIndex]
+                                                  ['primary']
+                                              : widget.colorTheme[index]
+                                                  ['primary'],
+                                          primaryColorLight: widget
+                                                  .randomizedColor
+                                              ? widget.colorTheme[randomIndex]
+                                                      ['primary']
+                                                  .withOpacity(0.3)
+                                              : widget.colorTheme[index]
+                                                      ['primary']
+                                                  .withOpacity(0.3),
+                                          primaryColorDark: widget.randomizedColor
+                                    ? widget.colorTheme[randomIndex]['accent']
+                                    : widget.colorTheme[index]['accent'],
+                                          valueIndicatorTextStyle:
+                                              TextStyle(color: Colors.grey)));
                               // shadowColor = widget.uniColor
                               //     ? Colors.grey
                               //     : widget.colors[index];
@@ -242,8 +262,8 @@ class _MyCustomTileState extends State<_MyCustomTile> {
   Widget build(BuildContext context) {
     return widget.isAnimated
         ? AnimatedContainer(
-            // width: 120,
-            // height: 20,
+            // width: 200,
+            // height: 100,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeIn,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
